@@ -3,20 +3,201 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test CLI Workspace</title>
+  <title>Sunset Scoops - Ice Cream Bicycle | Outer Sunset, SF</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@400;600&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; }
-    .hero { max-width: 640px; margin: 120px auto; padding: 0 24px; text-align: center; }
-    h1 { font-size: 2rem; margin-bottom: 12px; }
-    p { font-size: 1.1rem; color: #666; line-height: 1.6; }
+    body { font-family: 'Quicksand', sans-serif; background: #FFF8E7; color: #4A3728; }
+
+    header {
+      background: linear-gradient(135deg, #FF6B9D 0%, #FFA07A 50%, #FFD93D 100%);
+      padding: 48px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.08) 20px, rgba(255,255,255,0.08) 40px);
+    }
+    .logo { font-size: 3.2rem; font-family: 'Fredoka', sans-serif; font-weight: 700; color: white; text-shadow: 3px 3px 0 rgba(0,0,0,0.15); position: relative; }
+    .logo span { display: block; font-size: 1rem; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; margin-top: 4px; }
+    .tagline { font-size: 1.2rem; color: white; margin-top: 12px; position: relative; font-weight: 600; }
+    .emoji-row { font-size: 2rem; margin-top: 16px; position: relative; letter-spacing: 8px; }
+
+    .main { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 2px solid #FFE4B5;
+    }
+    .card h2 { font-family: 'Fredoka', sans-serif; font-size: 1.6rem; color: #FF6B9D; margin-bottom: 12px; }
+    .card p, .card li { line-height: 1.8; font-size: 1.05rem; }
+    .card ul { list-style: none; padding: 0; }
+    .card ul li::before { content: ''; margin-right: 8px; }
+
+    .flavor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 16px; }
+    .flavor {
+      background: linear-gradient(135deg, #FFF0F5, #FFF8DC);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      border: 2px dashed #FFB6C1;
+    }
+    .flavor .icon { font-size: 2.4rem; }
+    .flavor .name { font-family: 'Fredoka', sans-serif; font-weight: 600; margin-top: 8px; font-size: 1.1rem; }
+    .flavor .price { color: #FF6B9D; font-weight: 600; margin-top: 4px; }
+
+    .find-us {
+      background: linear-gradient(135deg, #E8F5E9, #FFF8E1);
+      border-color: #A5D6A7;
+    }
+    .schedule { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+    .schedule-item {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      border: 2px solid #C8E6C9;
+    }
+    .schedule-item .day { font-family: 'Fredoka', sans-serif; font-weight: 600; color: #FF6B9D; font-size: 1.1rem; }
+    .schedule-item .detail { margin-top: 4px; font-size: 0.95rem; color: #666; }
+
+    .party-card { background: linear-gradient(135deg, #F3E5F5, #FCE4EC); border-color: #CE93D8; }
+    .party-card h2 { color: #AB47BC; }
+
+    .cta {
+      display: inline-block;
+      background: linear-gradient(135deg, #FF6B9D, #FF8A65);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 16px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255,107,157,0.3);
+      transition: transform 0.2s;
+    }
+    .cta:hover { transform: scale(1.05); }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      color: #999;
+      font-size: 0.9rem;
+    }
+    footer .hearts { font-size: 1.2rem; letter-spacing: 4px; margin-bottom: 8px; }
+
+    @media (max-width: 500px) {
+      .logo { font-size: 2.4rem; }
+      .schedule { grid-template-columns: 1fr; }
+      .flavor-grid { grid-template-columns: 1fr 1fr; }
+    }
   </style>
 </head>
 <body>
-  <div class="hero">
-    <h1>Test CLI Workspace</h1>
-    <p>This site has the Intercom Messenger installed via the Fin CLI. Click the chat icon in the bottom-right to try it out.</p>
+  <header>
+    <div class="logo">Sunset Scoops <span>Ice Cream Bicycle Co.</span></div>
+    <div class="tagline">Kid-powered scoops on two wheels in the Outer Sunset</div>
+    <div class="emoji-row">&#x1f366; &#x1f6b2; &#x1f31e; &#x1f30a;</div>
+  </header>
+
+  <div class="main">
+    <div class="card">
+      <h2>Hey, we're Sunset Scoops!</h2>
+      <p>We're a crew of neighborhood kids who scoop ice cream from our custom bicycle cart every weekend on the Great Highway. Rain or fog (it's the Sunset, so probably fog), we'll be out there with cold scoops and warm vibes. Come find us!</p>
+    </div>
+
+    <div class="card">
+      <h2>Our Flavors</h2>
+      <p>All scoops are hand-scooped with love. We keep it simple and delicious.</p>
+      <div class="flavor-grid">
+        <div class="flavor">
+          <div class="icon">&#x1f368;</div>
+          <div class="name">Classic Vanilla</div>
+          <div class="price">$3 / scoop</div>
+        </div>
+        <div class="flavor">
+          <div class="icon">&#x1f36b;</div>
+          <div class="name">Double Chocolate</div>
+          <div class="price">$3 / scoop</div>
+        </div>
+        <div class="flavor">
+          <div class="icon">&#x1f353;</div>
+          <div class="name">Strawberry Sunset</div>
+          <div class="price">$3 / scoop</div>
+        </div>
+        <div class="flavor">
+          <div class="icon">&#x1f36c;</div>
+          <div class="name">Mint Chip</div>
+          <div class="price">$3 / scoop</div>
+        </div>
+        <div class="flavor">
+          <div class="icon">&#x1f95c;</div>
+          <div class="name">PB &amp; Cookie Dough</div>
+          <div class="price">$3.50 / scoop</div>
+        </div>
+        <div class="flavor">
+          <div class="icon">&#x1f308;</div>
+          <div class="name">Mystery Flavor</div>
+          <div class="price">$3 / scoop</div>
+        </div>
+      </div>
+      <p style="margin-top: 16px; font-size: 0.95rem; color: #999;">Toppings: sprinkles, crushed Oreos, gummy bears, whipped cream &mdash; $0.50 each</p>
+    </div>
+
+    <div class="card find-us">
+      <h2>Find Us This Weekend</h2>
+      <p>We pedal our ice cream bike along the Great Highway path in the Outer Sunset. Look for the bike with the big pink umbrella!</p>
+      <div class="schedule">
+        <div class="schedule-item">
+          <div class="day">Saturday</div>
+          <div class="detail">11am &ndash; 4pm</div>
+          <div class="detail">Great Highway (near Rivera St)</div>
+        </div>
+        <div class="schedule-item">
+          <div class="day">Sunday</div>
+          <div class="detail">11am &ndash; 3pm</div>
+          <div class="detail">Great Highway (near Noriega St)</div>
+        </div>
+      </div>
+      <p style="margin-top: 16px; font-size: 0.95rem; color: #888;">Weather-dependent! If it's actually sunny in the Sunset we might stay later.</p>
+    </div>
+
+    <div class="card party-card">
+      <h2>Book Us for Your Party!</h2>
+      <p>Birthday party? Block party? Beach hangout? We'll pedal our ice cream bike right to you anywhere in the Outer Sunset and Parkside neighborhoods.</p>
+      <ul>
+        <li>Up to 25 guests: <strong>$150</strong> (includes 2 scoops per person)</li>
+        <li>Up to 50 guests: <strong>$275</strong> (includes 2 scoops per person)</li>
+        <li>Extra scoops at the party: <strong>$2.50 each</strong></li>
+        <li>We bring cups, spoons, napkins, and good vibes</li>
+        <li>Book at least 1 week in advance</li>
+      </ul>
+      <button class="cta" onclick="Intercom('show')">Chat With Us to Book</button>
+    </div>
+
+    <div class="card">
+      <h2>About the Crew</h2>
+      <p>Sunset Scoops started in summer 2025 when a group of friends in the Outer Sunset decided to turn their love of ice cream into a weekend adventure. We're all between 10 and 14, and our parents help with the grown-up stuff (health permits, buying supplies, and making sure we don't eat all the inventory).</p>
+      <p style="margin-top: 12px;">A portion of every scoop goes to <strong>Ocean Beach cleanup efforts</strong>. Scoops for a cause!</p>
+    </div>
   </div>
+
+  <footer>
+    <div class="hearts">&#x1f366; &#x1f499; &#x1f30a;</div>
+    <p>Sunset Scoops Ice Cream Bicycle Co. &mdash; Outer Sunset, San Francisco</p>
+    <p style="margin-top: 4px;">Made with ice cream and sunshine (and a little bit of fog)</p>
+  </footer>
 
   <!-- Intercom Messenger -->
   <script>
